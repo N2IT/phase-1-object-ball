@@ -1,5 +1,3 @@
-const { iterInternalSymbol } = require("jsdom/lib/jsdom/living/generated/utils")
-
 let books = [
     {
         title: 'Eloquent Javascript',
@@ -49,22 +47,16 @@ const title = books.map(item => item.title)
 
 //Return an array of prices
 function pricesFoo(item){
-    console.log('inside of pricesFoo', item)
     return item.price
 }
-
 const prices = books.map(pricesFoo)
 
 //Return an array of inventory
-function inventory(item) {
-    return item.inventory
-}
+const inventory = books.map(item => item.inventory)
+
 //Return an array of books, 50% off
 function halfOff(item) {
     let itemCopy = Object.assign({}, item)
     itemCopy.price = parseInt(itemCopy.price/2,10)
     return itemCopy
 }
-
-loopAndUpdate(books, halfOff)
-
